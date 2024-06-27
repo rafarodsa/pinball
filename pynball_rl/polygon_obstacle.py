@@ -71,8 +71,8 @@ def heading_towards(ball: Ball, edge: list[Point]) -> bool:
         bool: _description_
     """
     v = [ball.get_center(), ball.get_velocity()]
-    if v[1].size() == 0.0:
-        return True
+    if math.isclose(v[1].size(), 0.0):
+        return False
     e = [edge[0], edge[1].minus(edge[0])]
     if v[1].is_parallel_to(e[1]):
         return False
