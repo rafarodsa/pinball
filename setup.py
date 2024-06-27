@@ -8,7 +8,7 @@ with open("README.md", "r", encoding="utf-8") as file:
     long_description = file.read()
 
 setuptools.setup(
-    name="pynball_rl",
+    name="pinball",
     author="Tom Smith",
     version="0.0.1",
     python_requires=">=3.9",
