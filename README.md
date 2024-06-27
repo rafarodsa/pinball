@@ -1,4 +1,4 @@
-# PinballEnv
+# Pinball
 Python implementation of the classic Pinball domain.
 
 The goal is to navigate a physically modelled ball around a number of obstacles to reach a target. The ball will bounce elastically off obstacles. The agent can apply small forces to the ball, accelerating it in the $x$ or $y$ axes.
