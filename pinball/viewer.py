@@ -2,24 +2,24 @@ try:
     import pygame
 except ImportError as e:
     print(f"Pygame not available: {e}")
-from pynball_rl.pynball_env import PynBall
-from pynball_rl.point import Point
-from pynball_rl.ball import Ball
+from pinball.pinball_env import PinballEnv
+from pinball.point import Point
+from pinball.ball import Ball
 
 
 class Viewer:
-    """Tools for rendering a PynBall game using PyGame."""
+    """Tools for rendering a PinballEnv game using PyGame."""
 
     DARK_GREY: list[int] = [64, 64, 64]
     LIGHT_GREY: list[int] = [232, 232, 232]
     BALL_COLOR: list[int] = [0, 0, 255]
     TARGET_COLOR: list[int] = [255, 0, 0]
 
-    def __init__(self, env: PynBall, size: list[int] | None = None) -> None:
+    def __init__(self, env: PinballEnv, size: list[int] | None = None) -> None:
         """Initialises a viewer instance.
 
         Args:
-            env (PynBall): PynBall environment to render.
+            env (PinballEnv): PinballEnv environment to render.
             size (list[int] | None, optional): Size of render window. If None a size
             of [750, 750] is used. Defaults to None.
         """

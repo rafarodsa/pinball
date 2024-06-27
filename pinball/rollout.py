@@ -2,7 +2,7 @@ from pathlib import Path
 import importlib.resources
 import random
 import json
-from pynball_rl import PynBall
+from pynball_rl import PinballEnv
 
 
 
@@ -27,8 +27,8 @@ def rollout(
         "reward": [],
         "terminal": [],
     }
-    config = importlib.resources.files("pynball_rl.configs") / config_file
-    env = PynBall(Path(config))
+    config = importlib.resources.files("pinball.configs") / config_file
+    env = PinballEnv(Path(config))
     s1 = env.reset()
     for _ in range(num_steps):
         a = random.choice(env.action_space)

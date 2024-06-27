@@ -2,12 +2,12 @@ from pathlib import Path
 import importlib.resources
 
 import pygame
-from pynball_rl.pynball_env import PynBall
-from pynball_rl.viewer import Viewer
+from pinball.pinball_env import PinballEnv
+from pinball.viewer import Viewer
 
 
 def main() -> None:
-    """Runs an interactive instance of PynBall.
+    """Runs an interactive instance of PinballEnv.
 
     Accelerate the ball using arrow keys. Close window to quit.
     """
@@ -25,8 +25,8 @@ def main() -> None:
     file = f"{config_dict[int(difficulty)]}_config.toml"
     # file = "four_rooms_config.toml"
 
-    config = importlib.resources.files("pynball_rl.configs") / file
-    env = PynBall(Path(config))
+    config = importlib.resources.files("pinball.configs") / file
+    env = PinballEnv(Path(config))
     env.reset()
     pygame.init()
     viewer = Viewer(env)

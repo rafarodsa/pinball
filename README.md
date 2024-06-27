@@ -1,7 +1,7 @@
-# PynBall
-Python implementation of the classic Pinball domain. 
+# PinballEnv
+Python implementation of the classic Pinball domain.
 
-The goal is to navigate a physically modelled ball around a number of obstacles to reach a target. The ball will bounce elastically off obstacles. The agent can apply small forces to the ball, accelerating it in the $x$ or $y$ axes. 
+The goal is to navigate a physically modelled ball around a number of obstacles to reach a target. The ball will bounce elastically off obstacles. The agent can apply small forces to the ball, accelerating it in the $x$ or $y$ axes.
 
 ### Dynamics
 The domain has a 4-dimensional continuous state space and a 1-dimensional discrete action space. Transition dynamics are stochastic with configuration.
@@ -23,15 +23,15 @@ Changes to velocity are stochastic, modelled as normal distribution centered aro
 - +10,000 for reaching the goal.
 
 ### Have a go
-To play interactively run `python -m pynball_rl` and select a difficulty between 1 and 3. 
+To play interactively run `python -m pynball_rl` and select a difficulty between 1 and 3.
 
 ### Configurations
-A number of configuration files are provided in  `pynball_rl.configs`. Configuration parameters are:
+A number of configuration files are provided in  `pinball.configs`. Configuration parameters are:
 - `seed`: Seed for random number generator
 - `step_duration`: Number of dynamics calculations per step. A larger value will improve robustness but reduce FPS.
 - `drag`: Drag coefficient. The ball velocity is multiplied by this at the end of each step. Setting to 0.0 will effectively make the state space 2-dimensional $(x,y)$.
-- `stddev_x`: The standard deviation of the normal distribution from which the change in $x$-velocity is sampled. Set to 0.0 for deterministic dynamics. 
-- `stddev_y`: The standard deviation of the normal distribution from which the change in $y$-velocity is sampled. Set to 0.0 for deterministic dynamics. 
+- `stddev_x`: The standard deviation of the normal distribution from which the change in $x$-velocity is sampled. Set to 0.0 for deterministic dynamics.
+- `stddev_y`: The standard deviation of the normal distribution from which the change in $y$-velocity is sampled. Set to 0.0 for deterministic dynamics.
 - `allow_noop` : Whether to include the no-operation action in the state space.
 
 Additionally ball start location and radius, target location and radius, and obstacle placements can be set through configuration.

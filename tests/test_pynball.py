@@ -2,12 +2,12 @@
 from pathlib import Path
 import math
 import pytest
-from pynball_rl import PynBall
+from pynball_rl import PinballEnv
 
 
 @pytest.fixture(name="env")
 def env_fixture():
-    return PynBall(Path("pynball_rl/configs/easy_config.toml"))
+    return PinballEnv(Path("pynball_rl/configs/easy_config.toml"))
 
 
 def test_init(env):

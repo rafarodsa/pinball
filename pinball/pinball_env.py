@@ -1,19 +1,17 @@
 import random
 from pathlib import Path
 
-try:
-    import tomllib
-except ModuleNotFoundError:
-    import tomli as tomllib
+
+import tomllib
 import matplotlib.pyplot as plt
 from matplotlib.patches import Polygon, Circle
-from pynball_rl.point import Point
-from pynball_rl.ball import Ball
-from pynball_rl.polygon_obstacle import PolygonObstacle
-from pynball_rl.target import Target
+from pinball.point import Point
+from pinball.ball import Ball
+from pinball.polygon_obstacle import PolygonObstacle
+from pinball.target import Target
 
 
-class PynBall:
+class PinballEnv:
     """A Pinball game domain.
 
     Attributes:
@@ -179,7 +177,7 @@ class PynBall:
         """Renders the current state of an environment.
 
         Args:
-            env (PynBall): The environment to render.
+            env (PinBallEnv): The environment to render.
         """
         _, ax = plt.subplots()
         for obstacle in self.obstacles:

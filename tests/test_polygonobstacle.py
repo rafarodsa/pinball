@@ -16,7 +16,7 @@ Tests include:
 import math
 import pytest
 from pynball_rl import PolygonObstacle, Ball, Point
-from pynball_rl.polygon_obstacle import line_intersect, heading_towards
+from pinball.polygon_obstacle import line_intersect, heading_towards
 
 
 @pytest.fixture(name="square_obstacle")
