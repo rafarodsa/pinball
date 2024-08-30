@@ -25,11 +25,11 @@ class PinballEnv:
     """
 
     ACTION_DICT = {
-        0: (1.0, 0.0),
-        1: (0.0, 1.0),
-        2: (-1.0, 0.0),
-        3: (0.0, -1.0),
-        4: (0.0, 0.0),
+        1: (1.0, 0.0),
+        2: (0.0, 1.0),
+        3: (-1.0, 0.0),
+        4: (0.0, -1.0),
+        0: (0.0, 0.0),
     }
     # ACC_X, ACC_Y, DEC_X, DEC_Y, NOOP
 
@@ -110,13 +110,13 @@ class PinballEnv:
 
         Args:
             action (int): Action to take. Used as key for ACTION_DICT:
-            0: ACC_X, 1: ACC_Y, 2: DEC_X, 3: DEC_Y, 4: NOP
+            1: ACC_X, 2: ACC_Y, 3: DEC_X, 4: DEC_Y, 0: NOP
 
         Returns:
             tuple: (state, reward, terminal, info)
         """
         assert self.reset_flag is True, "Environment requires resetting."
-        if action == 4:
+        if action == 0:
             impulse = (0.0, 0.0)
             reward = self.NOP_PENALTY
         else:
