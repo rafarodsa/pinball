@@ -2,7 +2,8 @@ import random
 from pathlib import Path
 
 
-import tomllib
+# import tomllib
+import tomli as tomllib
 import matplotlib.pyplot as plt
 from matplotlib.patches import Polygon, Circle
 from pinball.point import Point
