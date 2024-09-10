@@ -1,10 +1,12 @@
 import random
 from pathlib import Path
-
+from typing import Union
 
 import tomllib
 import matplotlib.pyplot as plt
 from matplotlib.patches import Polygon, Circle
+import numpy as np
+
 from pinball.point import Point
 from pinball.ball import Ball
 from pinball.polygon_obstacle import PolygonObstacle
@@ -42,7 +44,6 @@ class PinballEnv:
         config_path: Path,
         exploration: bool = False,
     ) -> None:
-
         self.exploration = exploration
         with open(config_path, "rb") as fb:
             self.config = tomllib.load(fb)
@@ -173,13 +174,13 @@ class PinballEnv:
                 f"vel_x: {self.ball.xdot}\nvel_y: {self.ball.ydot}"
             )
 
-    def render(self) -> plt.Figure:
+    def render(self, rgb=False) -> Union[plt.Figure, np.ndarray]:
         """Renders the current state of an environment.
 
         Args:
             env (PinBallEnv): The environment to render.
         """
-        _, ax = plt.subplots()
+        fig, ax = plt.subplots()
         for obstacle in self.obstacles:
             points = [(p.x, p.y) for p in obstacle.points]
             ax.add_patch(Polygon(points, facecolor="k"))
@@ -205,4 +206,22 @@ class PinballEnv:
             )
         ax.axis("equal")
         plt.gca().invert_yaxis()
-        plt.show()
+
+        if rgb:
+            # Draw the figure canvas
+            fig.canvas.draw()
+
+            # Get the RGBA buffer from the figure
+            w, h = fig.canvas.get_width_height()
+            buf = np.frombuffer(fig.canvas.buffer_rgba(), dtype=np.uint8)
+            buf.shape = (h, w, 4)
+
+            # Convert RGBA to RGB
+            buf = buf[:, :, :3]
+
+            plt.close(fig)
+            return buf
+
+        else:
+            plt.show()
+            return fig
