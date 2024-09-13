@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "pynball-rl"
+name = "pinball"
 version = "1.0.2"
 description = "A python implementation of the classic reinforcement learning domain pinball: http://irl.cs.brown.edu/pinball/"
 license = "MIT"
@@ -7,7 +7,7 @@ authors = ["Tom Smith <tmssmith@gmail.com>"]
 readme = "README.md"
 repository = "https://github.com/tmssmith/pynball-rl"
 exclude = ["./tests/*"]
-include = ["./pynball_rl/configs/*"]
+include = ["./pinball/configs/*"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
