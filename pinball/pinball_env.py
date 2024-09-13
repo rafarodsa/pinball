@@ -10,7 +10,7 @@ from pinball.point import Point
 from pinball.ball import Ball
 from pinball.polygon_obstacle import PolygonObstacle
 from pinball.target import Target
-
+import gymnasium as gym
 
 class PinballEnv:
     """A Pinball game domain.
@@ -54,7 +54,7 @@ class PinballEnv:
         self.stddev_x: float = self.config.get("stddev_x", 0.0)
         self.stddev_y: float = self.config.get("stddev_y", 0.0)
         self.allow_noop: bool = self.config.get("allow_noop", True)
-        self.action_space = range(5) if self.allow_noop else range(4)
+        self.action_space = gym.spaces.Discrete(5) if self.allow_noop else gym.spaces.Discrete(4)
         self.obstacles = [
             PolygonObstacle([Point(*point) for point in obstacle["points"]])
             for obstacle in self.config["obstacles"]
